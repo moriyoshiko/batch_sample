@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_bin
+  host: <%= ENV['MYSQL_HOST'] || '127.0.0.1' %>
+  port: <%= ENV['MYSQL_PORT'] || 3306 %>
+  username: <%= ENV['MYSQL_USER'] || 'batch_user' %>
+  password: <%= ENV['MYSQL_PASSWORD'] || 'batch' %>
+  database: batch_dev
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  database: batch_test
+
+production:
+  <<: *default
+  database: batch
+
